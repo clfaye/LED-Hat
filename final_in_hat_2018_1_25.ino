@@ -130,12 +130,12 @@ float phaseBluePaletteCenter = 0.0;
 float phaseGreenPaletteWidth = 0.0;
 float phaseGreenPaletteCenter = 0.0;
 
-float  speedRedPaletteWidth = 0.0023;
-float  speedRedPaletteCenter = 0.0012;
-float  speedBluePaletteWidth = 0.0021;
-float  speedBluePaletteCenter = 0.0010;
-float  speedGreenPaletteWidth = 0.0018;
-float  speedGreenPaletteCenter = 0.004;
+float  speedRedPaletteWidth = 0.0003;
+float  speedRedPaletteCenter = 0.0002;
+float  speedBluePaletteWidth = 0.00015;
+float  speedBluePaletteCenter = 0.00034;
+float  speedGreenPaletteWidth = 0.0008;
+float  speedGreenPaletteCenter = 0.0004;
 
 float  changeSpeedRedPaletteWidth = 0.0001;
 float  changeSpeedRedPaletteCenter = 0.0005;
@@ -309,19 +309,20 @@ void sinusoid()
       float v = 127 * (1 + sinf ( sqrtf (cx * cx + cy * cy ) ) );
       uint8_t data = v;
       data = (data * RedPaletteWidth / 255) + (RedPaletteCenter - RedPaletteWidth / 2);
-
       leds[XY(x, y)].r = data;
 
       cx = x + sinBlue1 - centerBlueWidth;
       cy = y + cosBlue2 - centerBlueHeight;
       v = 127 * (1 + sinf ( sqrtf (cx * cx + cy * cy ) ) );
       data = v;
+      data = (data * BluePaletteWidth / 255) + (BluePaletteCenter - BluePaletteWidth / 2);
       leds[XY(x, y)].b = data;
 
       cx = x + sinGreen1 - centerGreenWidth;
       cy = y + cosGreen2 - centerGreenHeight;
       v = 127 * (1 + sinf ( sqrtf (cx * cx + cy * cy ) ) );
       data = v;
+      data = (data * GreenPaletteWidth / 255) + (GreenPaletteCenter - GreenPaletteWidth / 2);
       leds[XY(x, y)].g = data;
 
     }
